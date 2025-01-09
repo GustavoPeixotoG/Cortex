@@ -1,15 +1,15 @@
 { pkgs, ... }:
 {
   fonts = {
+    enableDefaultPackages = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Meslo" ];})
+      nerd-fonts.meslo-lg
     ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "MesloLGSNerdFontMono" ];
-        sansSerif = [ "MesloLGSNerdFont" ];
-        monospace = [ "MesloLGSNerdFont" ];
-      };
+
+    fontconfig.defaultFonts = {
+      serif = [ "MesloLGSNerdFont" ];
+      sansSerif = [ "MesloLGSNerdFont" ];
+      monospace = [ "MesloLGSNerdFont" ];
     };
   };
 }

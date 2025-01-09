@@ -1,6 +1,7 @@
 {
   imports = [
     ./apps.nix
+    ./avahi.nix
     ./firewall.nix
     ./flake-config.nix
     ./font.nix
@@ -12,29 +13,21 @@
     ./steam.nix
     ./swap.nix
     ./users.nix
+    ./xserver.nix
   ];
 
   # Hostname
   networking.hostName = "NixOS-Gugu";
 
   # Boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = false;
-
-  # Networking
-  networking.networkmanager.enable = true;
-
-  services.xserver = {
+  boot.loader.grub = {
     enable = true;
-
-    layout = "br";
-    xkbVariant = "";
-    xkbModel = "";
-
-    displayManager.lightdm.enable = true;
-    desktopManager.cinnamon.enable = true;
+    device = "/dev/sda";
+    useOSProber = false;
   };
+
+  # Network Manager
+  networking.networkmanager.enable = true;
 
   programs = {
     dconf.enable = true;

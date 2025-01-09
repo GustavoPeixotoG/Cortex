@@ -1,22 +1,25 @@
 {
-  home.username = "gustavo";
-  home.homeDirectory = "/home/gustavo";
-
   imports = [
     ./apps.nix
     ./btop.nix
+    ./ghostty.nix
     ./git.nix
     ./lexis.nix
-    ./minecraft.nix
+    ./minecraft-overlay.nix
+    ./yazi.nix
     ./zsh.nix
   ];
 
-  home.stateVersion = "24.05";
+  home = {
+    homeDirectory = "/home/gustavo";
+    stateVersion = "24.05";
+    username = "gustavo";
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "firefox";
-    TERMINAL = "konsole";
+    sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "firefox";
+      TERMINAL = "ghostty";
+    };
   };
 
   programs.home-manager.enable = true;

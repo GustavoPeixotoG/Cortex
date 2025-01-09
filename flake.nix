@@ -1,40 +1,55 @@
 {
-  description = "NixOS flake configuration";
+  description = "My NixOS flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    home-manager.url = "github:nix-community/home-manager/release-24.05";
+    ghostty.url = "github:ghostty-org/ghostty";
+    home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
-  let
-    system = "x86_64-linux";
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+    let
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-  in {
-    nixosConfigurations = {
-      NixOS-Gugu = nixpkgs.lib.nixosSystem {
+      overlay-stable = final: prev: {
+        stable = import nixpkgs-stable {
+          inherit (prev) system;
+          config = {
+            inherit (prev.config) allowUnfree;
+          };
+        };
+      };
+
+      mkPkgs = system: import nixpkgs {
         inherit system;
-        modules = [
-          ./system
-          home-manager.nixosModules.home-manager
-        ];
-        specialArgs = { inherit inputs; };
+        config.allowUnfree = true;
+        overlays = [ overlay-stable ];
       };
 
-    };
-    homeConfigurations = {
-      gustavo = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hm ];
-        extraSpecialArgs = { inherit inputs; };
+    in {
+      pkgs = forAllSystems mkPkgs;
+
+      nixosConfigurations = {
+        NixOS-Gugu = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./system
+            home-manager.nixosModules.home-manager
+          ];
+          specialArgs = { inherit inputs; };
+        };
+      };
+
+      homeConfigurations = {
+        gustavo = home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs "x86_64-linux";
+          modules = [ ./hm ];
+          extraSpecialArgs = { inherit inputs; };
+        };
       };
     };
-  };
 }
