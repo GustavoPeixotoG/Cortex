@@ -2,7 +2,6 @@
   description = "My NixOS flake";
 
   inputs = {
-    ghostty.url = "github:ghostty-org/ghostty";
     home-manager.url = "github:nix-community/home-manager";
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
