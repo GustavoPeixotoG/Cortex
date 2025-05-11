@@ -9,11 +9,31 @@
     enable32Bit = true;
 
     extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      mesa
+      libglvnd
+      intel-media-driver
+      vaapiIntel
       vaapiVdpau
       libvdpau-va-gl
-      libGL
+    ];
+
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      mesa
+      libglvnd
+      vaapiIntel
     ];
   };
-}
+
+  environment.systemPackages = with pkgs; [
+    libva-utils
+    vulkan-tools
+    intel-gpu-tools
+    apitrace
+  ];
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";
+    GBM_BACKEND = "intel-ipc";
+    __GLX_VENDOR_LIBRARY_NAME = "intel";
+  };}

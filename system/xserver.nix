@@ -1,4 +1,5 @@
 {
+  services.power-profiles-daemon.enable = false;
   services.xserver = {
     enable = true;
 

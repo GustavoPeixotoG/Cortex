@@ -1,6 +1,7 @@
 {
   imports = [
     ./apps.nix
+    ./battery.nix
     ./avahi.nix
     ./firewall.nix
     ./flake-config.nix

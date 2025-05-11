@@ -8,6 +8,6 @@
     nix-output-monitor        # Processes output of Nix commands to show helpful and pretty information
     nvd                       # Nix/NixOS package version diff tool
     powertop                  # Analyze power consumption on Intel-based laptops
-    xclip
+    xclip                     # Tool to access the X clipboard from a console application
   ];
 }
