@@ -27,6 +27,7 @@
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
+    doomretro                 # Classic, refined DOOM source port
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
     thunderbird               # Full-featured e-mail client
