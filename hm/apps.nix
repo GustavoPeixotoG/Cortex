@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     curl                      # Command line tool for transferring files with URL syntax
     discord                   # All-in-one cross-platform voice and text chat for gamers
+    doomretro                 # Classic, refined DOOM source port
     ffmpeg                    # Complete, cross-platform solution to record, convert and stream audio and video
     firefox                   # Web browser built from Firefox source tree
     gh                        # GitHub CLI tool
@@ -27,9 +28,9 @@
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
     qbittorrent               # Featureful free software BitTorrent client
-    doomretro                 # Classic, refined DOOM source port
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
+    superTuxKart              # Free 3D kart racing game
     thunderbird               # Full-featured e-mail client
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
