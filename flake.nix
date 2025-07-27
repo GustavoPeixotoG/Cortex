@@ -6,6 +6,7 @@
     lexis.url = "github:EmanuelPeixoto/Lexis";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
