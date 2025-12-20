@@ -13,6 +13,7 @@
     iftop                     # Display bandwidth usage on a network interface
     jdk                       # Open-source Java Development Kit
     killall                   # No description :/
+    krita                     # Free and open source painting application
     lazygit                   # Simple terminal UI for git commands
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
@@ -23,7 +24,6 @@
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
-    obs-studio                # Free and open source software for video recording and live streaming
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
     prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
