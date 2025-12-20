@@ -6,6 +6,7 @@
     ./git.nix
     ./lexis.nix
     ./minecraft-overlay.nix
+    ./obs.nix
     ./yazi.nix
     ./zen-browser.nix
     ./zsh.nix
