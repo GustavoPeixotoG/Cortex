@@ -7,6 +7,7 @@
     ./lexis.nix
     ./minecraft-overlay.nix
     ./obs.nix
+    ./tmux.nix
     ./yazi.nix
     ./zen-browser.nix
     ./zsh.nix
