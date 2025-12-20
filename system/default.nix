@@ -10,6 +10,7 @@
     ./hotspot.nix
     ./intel.nix
     ./locale.nix
+    ./remote-build.nix
     ./sound.nix
     ./steam.nix
     ./swap.nix
