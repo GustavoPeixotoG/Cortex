@@ -1,8 +1,9 @@
 {
   imports = [
     ./apps.nix
-    ./battery.nix
     ./avahi.nix
+    ./battery.nix
+    ./bluetooth.nix
     ./firewall.nix
     ./flake-config.nix
     ./font.nix
@@ -10,11 +11,14 @@
     ./hotspot.nix
     ./intel.nix
     ./locale.nix
+    ./ly.nix
     ./remote-build.nix
     ./sound.nix
+    ./ssh.nix
     ./steam.nix
     ./swap.nix
     ./users.nix
+    ./webserver.nix
     ./xserver.nix
   ];
 
@@ -37,10 +41,8 @@
   };
 
   services = {
-    blueman.enable = true;
-    openssh.enable = true;
     vnstat.enable = true;
-    logind.lidSwitch = "lock";
+    logind.settings.Login.HandleLidSwitch = "lock";
   };
 
   # Android Emulator

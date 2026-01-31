@@ -1,6 +1,17 @@
 { pkgs, ... }:
+let
+  catfolder = import ./scripts/catfolder.nix { inherit pkgs; };
+  hotspot = import ./scripts/hotspot.nix { inherit pkgs; };
+  motd = import ./scripts/motd.nix { inherit pkgs; };
+  yt-tlp-menu = import ./scripts/yt-dlp-menu.nix { inherit pkgs; };
+in
 {
   home.packages = with pkgs; [
+    catfolder
+    hotspot
+    motd
+    yt-tlp-menu
+
     curl                      # Command line tool for transferring files with URL syntax
     discord                   # All-in-one cross-platform voice and text chat for gamers
     doomretro                 # Classic, refined DOOM source port
@@ -11,7 +22,6 @@
     gnumake                   # Tool to control the generation of non-source files from sources
     gparted                   # Graphical disk partitioning tool
     iftop                     # Display bandwidth usage on a network interface
-    jdk                       # Open-source Java Development Kit
     killall                   # No description :/
     krita                     # Free and open source painting application
     lazygit                   # Simple terminal UI for git commands
@@ -19,7 +29,6 @@
     lshw                      # Provide detailed information on the hardware configuration of the machine
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
     ncdu                      # Disk usage analyzer with an ncurses interface
-    neofetch                  # Fast, highly customizable system info script
     netcat                    # Free TLS/SSL implementation
     nload                     # Monitors network traffic and bandwidth usage with ncurses graphs
     nmap                      # Free and open source utility for network discovery and security auditing

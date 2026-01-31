@@ -20,5 +20,6 @@
     # Opcional, mas recomendado para debug inicial:
     # Isso evita verificar fingerprints SSH estritamente, útil se o IP muda
     extraOptions = ''builders-use-substitutes = true'';
+    settings.require-sigs = false;
   };
 }

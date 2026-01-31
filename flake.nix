@@ -2,54 +2,61 @@
   description = "My NixOS flake";
 
   inputs = {
-    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     lexis.url = "github:EmanuelPeixoto/Lexis";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
-
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-      overlay-stable = final: prev: {
-        stable = import nixpkgs-stable {
-          inherit (prev) system;
-          config = {
-            inherit (prev.config) allowUnfree;
-          };
-        };
-      };
-
-      mkPkgs = system: import nixpkgs {
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [ overlay-stable ];
+        overlays = [
+          (final: prev: {
+            stable = import nixpkgs-stable {
+              inherit system;
+              inherit (prev) config;
+            };
+          })
+        ];
       };
 
-    in {
-      pkgs = forAllSystems mkPkgs;
+      systems = [ "gustavo" ];
 
-      nixosConfigurations = {
-        NixOS-Gugu = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+      # Função para gerar uma configuração NixOS
+      mkNixosSystem = name:
+        nixpkgs.lib.nixosSystem {
+          inherit pkgs;
           modules = [
             ./system
             home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };
-      };
 
-      homeConfigurations = {
-        gustavo = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs "x86_64-linux";
+      # Função para gerar uma configuração do Home Manager
+      mkHomeConfig = name:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
           modules = [ ./hm ];
           extraSpecialArgs = { inherit inputs; };
         };
+
+    in {
+      nixosConfigurations = {
+        NixOS-Gugu = mkNixosSystem "gustavo";
       };
+
+      homeConfigurations = nixpkgs.lib.genAttrs systems (name: mkHomeConfig name);
     };
 }

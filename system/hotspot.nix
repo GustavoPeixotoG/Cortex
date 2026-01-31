@@ -1,11 +1,13 @@
 {
-  services.create_ap = {
-    enable = false;
-    settings = {
-      INTERNET_IFACE = "enp2s0f2";
-      WIFI_IFACE = "wlp1s0";
-      SSID = "";
-      PASSPHRASE = "";
-    };
+  networking.nat = {
+    enable = true;
+    internalInterfaces = [ "wlp9s0" ];
+    externalInterface = "enp8s0";
+  };
+
+  networking.firewall = {
+    trustedInterfaces = [ "wlp9s0" ];
+    allowedTCPPorts = [ 53 ]; # DNS
+    allowedUDPPorts = [ 53 67 68 ]; # DNS + DHCP
   };
 }
