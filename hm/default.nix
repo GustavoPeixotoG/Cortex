@@ -13,22 +13,13 @@
     ./obs.nix
     ./thunderbird.nix
     ./tmux.nix
+    ./user.nix
+    ./wallpaper.nix
     ./yazi.nix
     ./zen-browser.nix
     ./zsh.nix
   ];
 
-  home = {
-    homeDirectory = "/home/gustavo";
-    stateVersion = "24.05";
-    username = "gustavo";
+  home.stateVersion = "24.05";
 
-    sessionVariables = {
-      EDITOR = "nvim";
-      BROWSER = "firefox";
-      TERMINAL = "ghostty";
-    };
-  };
-
-  programs.home-manager.enable = true;
 }

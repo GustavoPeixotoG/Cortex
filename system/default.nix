@@ -12,7 +12,6 @@
     ./intel.nix
     ./locale.nix
     ./ly.nix
-    ./remote-build.nix
     ./sound.nix
     ./ssh.nix
     ./steam.nix

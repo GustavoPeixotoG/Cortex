@@ -130,6 +130,9 @@ let
         { 0, XF86XK_MonBrightnessDown,  spawn, SHCMD("brightnessctl set 5%-; echo > /tmp/dwm-status-pipe") },
         { 0, XF86XK_MonBrightnessUp,    spawn, SHCMD("brightnessctl set 5%+; echo > /tmp/dwm-status-pipe") },
 
+        /* Wallpaper */
+        { 0, XF86XK_Display, spawn, SHCMD("wallpaper") },
+
         TAGKEYS(                        XK_1,                      0)
         TAGKEYS(                        XK_2,                      1)
         TAGKEYS(                        XK_3,                      2)

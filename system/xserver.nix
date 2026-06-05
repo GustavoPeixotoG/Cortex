@@ -22,7 +22,6 @@
     };
 
     windowManager.dwm.enable = true;
-    desktopManager.cinnamon.enable = true;
     desktopManager.xterm.enable = false;
   };
   };

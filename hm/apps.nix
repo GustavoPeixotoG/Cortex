@@ -39,7 +39,7 @@ in
     qbittorrent               # Featureful free software BitTorrent client
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
-    superTuxKart              # Free 3D kart racing game
+    supertuxkart              # Free 3D kart racing game
     thunderbird               # Full-featured e-mail client
     unrar                     # Utility for RAR archives
     unzip                     # Extraction utility for archives compressed in .zip format
