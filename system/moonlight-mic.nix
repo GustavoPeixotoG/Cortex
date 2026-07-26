@@ -9,7 +9,7 @@ let
     while true; do
       rm -f $FIFO
       mkfifo $FIFO
-      ${pkgs.pipewire}/bin/pw-record --target=${micSource} -a --format s16 --rate 48000 --channels 1 $FIFO &
+      ${pkgs.pipewire}/bin/pw-record --latency 480/48000 --target=${micSource} -a --format s16 --rate 48000 --channels 1 $FIFO &
       REC=$!
       ${pkgs.netcat}/bin/nc ${serverIP} ${builtins.toString micPort} < $FIFO
       kill $REC 2>/dev/null
