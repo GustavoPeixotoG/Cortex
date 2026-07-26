@@ -12,6 +12,7 @@
     ./intel.nix
     ./locale.nix
     ./ly.nix
+    ./moonlight-mic.nix
     ./sound.nix
     ./ssh.nix
     ./steam.nix
@@ -36,6 +37,7 @@
 
   programs = {
     dconf.enable = true;
+    hyprland.enable = true;
     zsh.enable = true;
   };
 

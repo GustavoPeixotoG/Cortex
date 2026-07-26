@@ -34,8 +34,9 @@ in
     nmap                      # Free and open source utility for network discovery and security auditing
     nomacs                    # Qt-based image viewer
     pciutils                  # Collection of programs for inspecting and manipulating configuration of PCI devices
-    prismlauncher             # Free, open source launcher for Minecraft
+    # prismlauncher             # Free, open source launcher for Minecraft
     progress                  # Tool that shows the progress of coreutils programs
+    pwvucontrol
     qbittorrent               # Featureful free software BitTorrent client
     speedtest-cli             # Command line interface for testing internet bandwidth using speedtest.net
     stress                    # Simple workload generator for POSIX systems.
