@@ -27,6 +27,7 @@ in
     lazygit                   # Simple terminal UI for git commands
     lm_sensors                # Tools for reading hardware sensors
     lshw                      # Provide detailed information on the hardware configuration of the machine
+    moonlight-qt              # Play your PC games on almost any device
     mpv                       # General-purpose media player, fork of MPlayer and mplayer2
     ncdu                      # Disk usage analyzer with an ncurses interface
     netcat                    # Free TLS/SSL implementation
