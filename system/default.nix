@@ -11,6 +11,7 @@
     ./hyprland.nix
     ./intel.nix
     ./locale.nix
+    ./remote-build.nix
     ./ly.nix
     ./moonlight-mic.nix
     ./sound.nix
