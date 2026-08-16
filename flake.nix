@@ -51,7 +51,6 @@
           inherit pkgs;
           modules = [
             ./system
-            home-manager.nixosModules.home-manager
           ];
           specialArgs = { inherit inputs; };
         };

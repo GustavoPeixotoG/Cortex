@@ -97,7 +97,6 @@ in
         (mkBind "SUPER + SHIFT + E" "hl.dsp.exit()")
         (mkBind "SUPER + SHIFT + M" ''hl.dsp.window.move({ workspace = "special:magic" })'')
         (mkBind "SUPER + SHIFT + Q" "hl.dsp.window.close()")
-        (mkBind "SUPER + SHIFT + C" "hl.dsp.window.close()")  # bind extra do DWM
 
         # === mover janela (direcional) ===
         ] ++ map (d: mkBind
@@ -127,15 +126,9 @@ in
         { _args = [ "SUPER + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()")  { mouse = true; } ]; }
 
         # === apps ===
-        (mkCmd  "SUPER + Return"    "${pkgs.ghostty}/bin/ghostty")         # terminal
+        (mkCmd  "SUPER + Return"    "${pkgs.kitty}/bin/kitty")         # terminal
         (mkBind "SUPER + F"         "hl.dsp.window.fullscreen()")          # fullscreen
         (mkBind "SUPER + M"         ''hl.dsp.workspace.toggle_special("magic")'')
-
-        # === gaps (igual DWM) ===
-        (mkBind "SUPER + minus"       ''hl.dsp.global("gaps", { inc = -1 })'')
-        (mkBind "SUPER + equal"       ''hl.dsp.global("gaps", { inc = 1 })'')
-        (mkBind "SUPER + SHIFT + equal" ''hl.dsp.global("gaps", { reset = true })'')
-
 
         # === noctalia ===
         (mkCmd  "SUPER + D"        "${noct} panel-toggle launcher")
@@ -153,7 +146,6 @@ in
 
         # === XF86 / media keys ===
         (mkCmd "XF86Calculator"  "${pkgs.qalculate-qt}/bin/qalculate-qt")
-        (mkCmd "XF86HomePage"    "${pkgs.firefox}/bin/firefox")
         (mkCmd "XF86Display"     "${noct} wallpaper-random")
 
         # === dpms ===
