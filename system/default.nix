@@ -6,9 +6,9 @@
     ./bluetooth.nix
     ./firewall.nix
     ./flake-config.nix
-    ./font.nix
     ./hardware-configuration.nix
     ./hotspot.nix
+    ./hyprland.nix
     ./intel.nix
     ./locale.nix
     ./ly.nix
@@ -19,7 +19,6 @@
     ./swap.nix
     ./users.nix
     ./webserver.nix
-    ./xserver.nix
   ];
 
   # Hostname

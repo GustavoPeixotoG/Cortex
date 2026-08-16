@@ -1,20 +1,24 @@
+{ inputs, ... }:
 {
   imports = [
+    inputs.noctalia.homeModules.default
     ./apps.nix
     ./btop.nix
-    ./dwm
     ./fastfetch.nix
     ./ghostty.nix
     ./git.nix
+    ./hyprland
     ./java.nix
     ./lexis.nix
     ./minecraft-overlay.nix
     ./nix-index.nix
+    ./noctalia.nix
     ./obs.nix
+    ./satty.nix
+    ./stylix.nix
     ./thunderbird.nix
     ./tmux.nix
     ./user.nix
-    ./wallpaper.nix
     ./yazi.nix
     ./zen-browser.nix
     ./zsh.nix

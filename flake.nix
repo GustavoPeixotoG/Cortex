@@ -16,6 +16,14 @@
       url = "github:EmanuelPeixoto/Lexis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
@@ -25,6 +33,7 @@
         inherit system;
         config.allowUnfree = true;
         overlays = [
+          inputs.noctalia.overlays.default
           (final: prev: {
             stable = import nixpkgs-stable {
               inherit system;
