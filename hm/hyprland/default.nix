@@ -62,6 +62,7 @@ in
         "animations.enabled" = 0;
       };
 
+
       window_rule = [{
         name = "pip-follow";
         match = { title = "[Pp]icture.*[Pp]icture"; };
@@ -135,9 +136,6 @@ in
         (mkBind "SUPER + equal"       ''hl.dsp.global("gaps", { inc = 1 })'')
         (mkBind "SUPER + SHIFT + equal" ''hl.dsp.global("gaps", { reset = true })'')
 
-        # === layout toggles (adaptado do DWM) ===
-        (mkBind "SUPER + T" "hl.dsp.window.split()")      # tile toggle
-        (mkBind "SUPER + SPACE" "hl.dsp.window.split()")   # layout toggle
 
         # === noctalia ===
         (mkCmd  "SUPER + D"        "${noct} panel-toggle launcher")
@@ -173,17 +171,6 @@ in
         { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-down\")") { locked = true; repeating = true; } ]; }
         { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${noct} brightness-up\")") { locked = true; repeating = true; } ]; }
       ];
-
-      on = {
-        _args = [
-          "hyprland.start"
-          (lib.generators.mkLuaInline ''
-            function()
-              hl.exec_cmd("${pkgs.noctalia}/bin/noctalia")
-            end
-          '')
-        ];
-      };
     };
   };
 }

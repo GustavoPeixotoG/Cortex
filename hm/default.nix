@@ -5,7 +5,7 @@
     ./apps.nix
     ./btop.nix
     ./fastfetch.nix
-    ./ghostty.nix
+    ./kitty.nix
     ./git.nix
     ./hyprland
     ./java.nix

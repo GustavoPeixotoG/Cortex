@@ -14,6 +14,7 @@
     ./remote-build.nix
     ./ly.nix
     ./moonlight-mic.nix
+    ./plymouth.nix
     ./sound.nix
     ./ssh.nix
     ./steam.nix

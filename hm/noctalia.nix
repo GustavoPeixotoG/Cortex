@@ -2,13 +2,14 @@
 {
   programs.noctalia = {
     enable = true;
+    systemd.enable = true;
 
     settings = {
       bar.default = {
         position = "top";
         start = [ "session" "clock" "group:g1" "privacy" ];
         center = [ "workspaces" ];
-        end = [ "media" "volume" "network" "notifications" "tray" ];
+        end = [ "weather" "media" "volume" "network" "notifications" "tray" ];
         thickness = 35;
         margin_edge = 0;
         margin_ends = 0;
@@ -48,8 +49,23 @@
         temperature_night = 4000;
       };
 
+      location = {
+        auto_locate = true;
+      };
+
       weather = {
-        enabled = false;
+        enabled = true;
+      };
+
+      control_center = {
+        shortcuts = [
+          { type = "wifi"; }
+          { type = "bluetooth"; }
+          { type = "caffeine"; }
+          { type = "nightlight"; }
+          { type = "notification"; }
+          { type = "clipboard"; }
+        ];
       };
 
       lockscreen = {
@@ -83,6 +99,9 @@
         polkit_agent = true;
         settings_show_advanced = true;
         clipboard_history_max_entries = 500;
+        launcher = {
+          fetch_exchange_rates = false;
+        };
         panel = {
           session_placement = "floating";
           session_position = "center";
