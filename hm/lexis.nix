@@ -4,11 +4,11 @@ let
 in
 {
   home.packages = [
-    (nixvim.legacyPackages.${pkgs.system}.makeNixvimWithModule {
+    (nixvim.legacyPackages.${pkgs.stdenv.hostPlatform.system}.makeNixvimWithModule {
       inherit pkgs;
       module = {
         imports = [ (import (inputs.lexis + "/config")) ];
-        # apenas C/C++ (clangd) e Nix (nixd) - desabilita o resto
+        # only C/C++ (clangd) and Nix (nixd)
         plugins.vimtex.enable = lib.mkForce false;
         plugins.lsp.servers = {
           bashls.enable = lib.mkForce false;
